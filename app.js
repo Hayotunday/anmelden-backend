@@ -3,11 +3,13 @@ const mysql = require('mysql')
 const bodyParser = require("body-parser");
 const nodemailer = require('nodemailer');
 
+const databasepassword = process.env.DATABASEPASWORD
+const mailpass = process.env.MAILPASS
 // Create connection
 const db = mysql.createConnection({
   host: 'sql8.freemysqlhosting.net',
   user: 'sql8595427',
-  password: '7rUs6KJSel',
+  password: databasepassword,
   database: 'sql8595427'
 })
 
@@ -30,7 +32,7 @@ const sendMail = async (receiver, name) => {
     secure: true,
     auth: {
       user: 'idowudanielayotunde@gmail.com',
-      pass: 'imzfdxcbjicwsugw'
+      pass: mailpass
     }
   });
 

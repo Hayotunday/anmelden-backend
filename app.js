@@ -5,10 +5,10 @@ const nodemailer = require('nodemailer');
 
 // Create connection
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'Anmelden'
+  host: 'sql8.freemysqlhosting.net',
+  user: 'sql8595427',
+  password: '7rUs6KJSel',
+  database: 'sql8595427'
 })
 
 db.connect((err) => {
@@ -50,29 +50,40 @@ const sendMail = async (receiver, name) => {
   })
 }
 
-// Create Database
-app.get('/createdb', (req, res) => {
-  let sql = 'CREATE DATABASE IF NOT EXISTS Anmelden'
-  db.query(sql, (err, result) => {
-    if (err) throw err;
-    console.log(result)
-    res.send('Database created...')
-  })
-})
+// Create Tables
+// app.get('/createtable', (req, res) => {
+//   let sql = 'create Table IF NOT EXISTS EntryFormTable ('
+//     + 'id int AUTO_INCREMENT,'
+//     + 'salutation Varchar(10) not null,'
+//     + 'employment varchar(20) not null,'
+//     + 'title varchar(50) not null,'
+//     + 'practice varchar(50),'
+//     + 'eduTitle Varchar(50),'
+//     + 'street varchar(150),'
+//     + 'profession varchar(50) not null,'
+//     + 'postcode int(20),'
+//     + 'firstname Varchar(50) not null,'
+//     + 'location varchar(50) not null,'
+//     + 'surname varchar(50) not null,'
+//     + 'phone varchar(20),'
+//     + 'dob date,'
+//     + 'email varchar(50) not null,'
+//     + 'diplomaCountry varchar(50) not null,'
+//     + 'privateAddress Varchar(50),'
+//     + 'diplomayear date,'
+//     + 'privatezip varchar(20) not null,'
+//     + 'gln varchar(50),'
+//     + 'privatelocation varchar(150) not null,'
+//     + 'uid Varchar(100),'
+//     + 'privatephone varchar(50),'
+//     + 'PRIMARY KEY(id))'
+//   db.query(sql, (err, result) => {
+//     if (err) throw err;
+//     console.log(result)
+//     res.send('Table Entry created...')
+//   })
 
-// Create rgistration table
-app.get('/createregistertable', (req, res) => {
-  let sql = 'create Table IF NOT EXISTS Registration (id int AUTO_INCREMENT, firstname Varchar(50), surname varchar(50) , email varchar(50), phone varchar(20), profession varchar(50), PRIMARY KEY(id))';
-  db.query(sql, (err, result) => {
-    if (err) throw err;
-    console.log(result)
-    res.send('Table Registration created...')
-  })
-})
-
-// Create entry table
-// app.get('/createentrytable', (req, res) => {
-//   let sql = 'create Table IF NOT EXISTS Entry (id int AUTO_INCREMENT, firstname Varchar(50), lastname varchar(50) , email varchar(50), phone varchar(20), profession varchar(50), PRIMARY KEY(id))';
+//   sql = 'create Table IF NOT EXISTS Registration (id int AUTO_INCREMENT, firstname Varchar(50) not null, lastname varchar(50) not null, email varchar(50) not null, phone varchar(20) not null, profession varchar(50) not null, PRIMARY KEY(id))';
 //   db.query(sql, (err, result) => {
 //     if (err) throw err;
 //     console.log(result)
@@ -81,10 +92,69 @@ app.get('/createregistertable', (req, res) => {
 // })
 
 // Insert details to registration table
-app.post('/adddetails/', (req, res) => {
-  console.log(req.body)
+app.post('/addnewdetails/', (req, res) => {
   const { firstname, lastname, email, phone, profession } = req.body;
-  let sql = `insert into anmelden.registration (firstname, lastname, email, phone, profession) values ('${firstname}','${lastname}','${email}','${phone}','${profession}')`;
+  sql = `insert into sql8595427.RegisterTable (firstname, lastname, email, phone, profession) values ('${firstname}','${lastname}','${email}','${phone}','${profession}')`;
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    console.log(result)
+    res.send('Inserted new details...');
+    let name = lastname + '' + firstname
+    sendMail(email, name);
+  })
+})
+
+// Insert data to entry table
+app.post('/addentry/', (req, res) => {
+  const {
+    salutation,
+    employment,
+    title,
+    practice,
+    eduTitle,
+    street,
+    profession,
+    postcode,
+    firstname,
+    location,
+    lastname,
+    phone,
+    dob,
+    email,
+    diplomaCountry,
+    privateaddress,
+    diplomayear,
+    privatezip,
+    gln,
+    privatelocation,
+    uid,
+    privatephone
+  } = req.body;
+
+  sql = `insert into sql8595427.Registration (
+    salutation,
+    employment,
+    title,
+    practice,
+    eduTitle,
+    street,
+    profession,
+    postcode,
+    firstname,
+    location,
+    lastname,
+    phone,
+    dob,
+    email,
+    diplomaCountry,
+    privateaddress,
+    diplomayear,
+    privatezip,
+    gln,
+    privatelocation,
+    uid,
+    privatephone
+    ) values ('${salutation}','${employment}','${title}','${practice}','${eduTitle}','${street}','${profession}','${postcode}','${firstname}','${location}','${lastname}','${phone}','${dob}','${email}','${diplomaCountry}','${privateaddress}','${diplomayear}','${privatezip}','${gln}','${privatelocation}','${uid}','${privatephone}')`;
   db.query(sql, (err, result) => {
     if (err) throw err;
     console.log(result)

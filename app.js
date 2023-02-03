@@ -2,15 +2,20 @@ const express = require('express')
 const mysql = require('mysql')
 const bodyParser = require("body-parser");
 const nodemailer = require('nodemailer');
+require('dotenv').config()
 
-const databasepassword = process.env.DATABASEPASWORD
+const host = process.env.DATABASEHOST
+const user = process.env.DATABASEUSER
+const password = process.env.DATABASEPASSWORD
+const email = process.env.EMAIL
 const mailpass = process.env.MAILPASS
+
 // Create connection
 const db = mysql.createConnection({
-  host: 'sql8.freemysqlhosting.net',
-  user: 'sql8595427',
+  host: host,
+  user: databaseuser,
   password: databasepassword,
-  database: 'sql8595427'
+  database: databaseuser
 })
 
 db.connect((err) => {
@@ -31,7 +36,7 @@ const sendMail = async (receiver, name) => {
     port: 465,
     secure: true,
     auth: {
-      user: 'idowudanielayotunde@gmail.com',
+      user: email,
       pass: mailpass
     }
   });
@@ -166,6 +171,8 @@ app.post('/addentry/', (req, res) => {
   })
 })
 
-app.listen('3000', () => {
+const port = process.env.PORT || 3000
+
+app.listen(port, () => {
   console.log('Server started on port 3000')
 })

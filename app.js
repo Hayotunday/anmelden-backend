@@ -141,7 +141,7 @@ app.post('/addentry/', (req, res) => {
     privatephone
   } = req.body;
 
-  sql = `insert into sql8595427.Registration (
+  sql = `insert into sql8595427.EntryFormTable (
     salutation,
     employment,
     title,

@@ -4,6 +4,10 @@ const bodyParser = require("body-parser");
 const nodemailer = require('nodemailer');
 require('dotenv').config()
 
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+
 const host = process.env.DATABASEHOST
 const user = process.env.DATABASEUSER
 const password = process.env.DATABASEPASSWORD
@@ -25,8 +29,6 @@ db.connect((err) => {
   console.log('MySql Connected...')
 })
 
-const app = express();
-app.use(bodyParser.json());
 
 // Mail sender function
 const sendMail = async (receiver, name) => {

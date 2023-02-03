@@ -101,7 +101,7 @@ const sendMail = async (receiver, name) => {
 // Insert details to registration table
 app.post('/addnewdetails/', (req, res) => {
   const { firstname, lastname, email, phone, profession } = req.body;
-  sql = `insert into sql8595427.RegisterTable (firstname, lastname, email, phone, profession) values ('${firstname}','${lastname}','${email}','${phone}','${profession}')`;
+  sql = `insert into sql8595427.Registration (firstname, lastname, email, phone, profession) values ('${firstname}','${lastname}','${email}','${phone}','${profession}')`;
   db.query(sql, (err, result) => {
     if (err) throw err;
     console.log(result)

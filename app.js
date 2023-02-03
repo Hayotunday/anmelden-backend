@@ -13,9 +13,9 @@ const mailpass = process.env.MAILPASS
 // Create connection
 const db = mysql.createConnection({
   host: host,
-  user: databaseuser,
-  password: databasepassword,
-  database: databaseuser
+  user: user,
+  password: password,
+  database: user
 })
 
 db.connect((err) => {

@@ -131,7 +131,7 @@ const sendMail = async (receiver, name, type) => {
         </p>
       
         <P>
-          wir freuen uns sehr, dass Sie am Symposium Name] teilnehmen werden! Wir haben hart daran gearbeitet, ein
+          wir freuen uns sehr, dass Sie am Anmeldung symposium teilnehmen werden! Wir haben hart daran gearbeitet, ein
           unvergessliches Erlebnis für alle Teilnehmer zu schaffen, und wir können es kaum erwarten, dass Sie ein Teil davon
           sind.
         </P>
@@ -145,11 +145,11 @@ const sendMail = async (receiver, name, type) => {
       
         <p>
           Bitte zögern Sie nicht, uns zu kontaktieren, wenn Sie Fragen oder Bedenken haben. Unser Team steht Ihnen während des
-          gesamten [Symposium Name] zur Verfügung.
+          gesamten Anmeldung symposium zur Verfügung.
         </p>
       
         <p>
-          Noch einmal: Herzlich willkommen zum [Symposium Name]. Wir freuen uns darauf, Sie bald wiederzusehen!
+          Noch einmal: Herzlich willkommen zum Anmeldung symposium. Wir freuen uns darauf, Sie bald wiederzusehen!
         </p>
       
         <p>

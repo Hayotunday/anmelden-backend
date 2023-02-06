@@ -252,7 +252,7 @@ app.post('/addentry/', (req, res) => {
     }
     console.log(result)
     // res.send('Inserted new details...');
-    const type = entry;
+    const type = "entry";
     sendMail(email, firstname, type);
   })
 })

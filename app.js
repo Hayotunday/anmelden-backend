@@ -189,7 +189,7 @@ app.post('/addnewdetails/', (req, res) => {
       console.log(err);
     }
     console.log(result)
-    // res.send('Inserted new details...');
+    res.send('Inserted into database.....');
     const type = "register"
     sendMail(email, firstname, type);
   })
@@ -251,7 +251,7 @@ app.post('/addentry/', (req, res) => {
       console.log(err);
     }
     console.log(result)
-    // res.send('Inserted new details...');
+    res.send('Inserted into database.....');
     const type = "entry";
     sendMail(email, firstname, type);
   })

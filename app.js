@@ -6,7 +6,14 @@ const cors = require('cors');
 require('dotenv').config()
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 app.use(bodyParser.json());
 
 const host = process.env.DATABASEHOST
@@ -62,21 +69,21 @@ const sendMail = async (receiver, name) => {
 
 // Insert details to registration table
 app.post('/addnewdetails/', (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
   const { firstname, lastname, email, phone, profession } = req.body;
   sql = `insert into sql8595427.Registration (firstname, lastname, email, phone, profession) values ('${firstname}','${lastname}','${email}','${phone}','${profession}')`;
   db.query(sql, (err, result) => {
-    if (err) throw err;
+    if (err) {
+      console.log(err);
+    }
     console.log(result)
     res.send('Inserted new details...');
-    let name = lastname + '' + firstname
+    let name = lastname + ' ' + firstname
     sendMail(email, name);
   })
 })
 
 // Insert data to entry table
 app.post('/addentry/', (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
   const {
     salutation,
     employment,
@@ -127,10 +134,12 @@ app.post('/addentry/', (req, res) => {
     privatephone
     ) values ('${salutation}','${employment}','${title}','${practice}','${eduTitle}','${street}','${profession}','${postcode}','${firstname}','${location}','${lastname}','${phone}','${dob}','${email}','${diplomaCountry}','${privateaddress}','${diplomayear}','${privatezip}','${gln}','${privatelocation}','${uid}','${privatephone}')`;
   db.query(sql, (err, result) => {
-    if (err) throw err;
+    if (err) {
+      console.log(err);
+    }
     console.log(result)
     res.send('Inserted new details...');
-    let name = lastname + '' + firstname
+    let name = lastname + ' ' + firstname
     sendMail(email, name);
   })
 })

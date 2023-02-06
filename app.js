@@ -19,8 +19,10 @@ app.use(bodyParser.json());
 const host = process.env.DATABASEHOST
 const user = process.env.DATABASEUSER
 const password = process.env.DATABASEPASSWORD
-const email = process.env.EMAIL
-const mailpass = process.env.MAILPASS
+const email_register = process.env.EMAILREGISTER
+const mailpass_register = process.env.MAILPASSREGISTER
+const email_entry = process.env.EMAILENTRY
+const mailpass_entry = process.env.MAILPASSENTRY
 
 // Create connection
 const db = mysql.createConnection({
@@ -39,46 +41,156 @@ db.connect((err) => {
 
 
 // Mail sender function
-const sendMail = async (receiver, name) => {
-  let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-      user: email,
-      pass: mailpass
-    }
-  });
+const sendMail = async (receiver, name, type) => {
+  let transporter
+  let mailOptions = {}
 
-  let mailOptions = {
-    from: 'idowudanielayotunde@gmail.com',
-    to: receiver,
-    subject: 'Welcome',
-    html: `<b>We are happy you joined us, ${name}</b>`
-  };
+  switch (type) {
+    case "register":
+      transporter = nodemailer.createTransport({
+        service: 'gmail',
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth: {
+          user: email_register,
+          pass: mailpass_register
+        }
+      });
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log('Email not sent: ' + error);
-    } else {
-      console.log('Email sent: ' + info.response);
-    }
-  })
+      mailOptions = {
+        from: email_register,
+        to: receiver,
+        subject: 'Thema: Willkommen in unserer Gemeinschaft!',
+        html: `<div>
+        <p>
+          Lieber, ${name}
+        </p>
+      
+        <P>
+          wir freuen uns sehr, Sie als neuen Mitglied in unserer Community begrüssen zu dürfen!
+        </P>
+      
+        <p>
+          Wir haben es uns zur Aufgabe gemacht, unseren Mitglieder
+          qualitativ hochwertigsten Informationen, Ressourcen und Möglichkeiten in Ihrer beruf zu bieten. Von interessanten
+          Artikeln und wertvollen Tipps bis hin zu spannenden Veranstaltungen und exklusiven Angeboten
+          können Sie sich darauf verlassen, dass wir Sie auf dem Laufenden halten.
+        </p>
+      
+        <p>
+          Wir ermutigen Sie auch, sich zu beteiligen, indem Sie Ihre Gedanken mitteilen Feedback geben etc. Wir hören gerne
+          von unseren Abonnenten und schätzen Ihre Beiträge zu unserer Gemeinschaft.
+        </p>
+      
+        <p>
+          Noch einmal: Herzlich willkommen in unserer Community! Wir freuen uns sehr, Sie bei uns zu haben.
+        </p>
+      
+        <p>
+          Mit freundlichen Grüssen,
+        </p>
+      
+        <p>
+          Dr. med. Valbona Miftari
+        </p>
+      
+        <p>
+          Swissalbmed
+        </p>
+      </div>`
+      };
+
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.log('Email not sent: ' + error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      })
+      break;
+    case "entry":
+      transporter = nodemailer.createTransport({
+        service: 'gmail',
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth: {
+          user: email_entry,
+          pass: mailpass_entry
+        }
+      });
+
+      mailOptions = {
+        from: email_entry,
+        to: receiver,
+        subject: 'Thema: Willkommen in unserer Gemeinschaft!',
+        html: `<div>
+        <p>
+          Sehr geehrte(r) ${name}
+        </p>
+      
+        <P>
+          wir freuen uns sehr, dass Sie am Symposium Name] teilnehmen werden! Wir haben hart daran gearbeitet, ein
+          unvergessliches Erlebnis für alle Teilnehmer zu schaffen, und wir können es kaum erwarten, dass Sie ein Teil davon
+          sind.
+        </P>
+      
+        <p>
+          Auf dem Symposium werden Sie die Möglichkeit haben, [einige der wichtigsten Höhepunkte der Veranstaltung
+          aufzulisten, wie z. B. Networking-Möglichkeiten, Vorträge von Gastrednern, Podiumsdiskussionen usw.]. Unser Ziel ist
+          es, Ihnen wertvolle Einblicke aktuelle Informationen etc zu vermitteln, die Sie in Ihr [berufliches/persönliches
+          leben mitnehmen und anwenden können.
+        </p>
+      
+        <p>
+          Bitte zögern Sie nicht, uns zu kontaktieren, wenn Sie Fragen oder Bedenken haben. Unser Team steht Ihnen während des
+          gesamten [Symposium Name] zur Verfügung.
+        </p>
+      
+        <p>
+          Noch einmal: Herzlich willkommen zum [Symposium Name]. Wir freuen uns darauf, Sie bald wiederzusehen!
+        </p>
+      
+        <p>
+          Mit freundlichen Grüssen,
+        </p>
+      
+        <p>
+          Dr. med. Valbona Miftari
+        </p>
+      
+        <p>
+          Swissalbmed
+        </p>
+      </div>`
+      };
+
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.log('Email not sent: ' + error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      })
+      break;
+    default:
+      break;
+  }
 }
 
 // Insert details to registration table
 app.post('/addnewdetails/', (req, res) => {
   const { firstname, lastname, email, phone, profession } = req.body;
-  sql = `insert into sql8595427.Registration (firstname, lastname, email, phone, profession) values ('${firstname}','${lastname}','${email}','${phone}','${profession}')`;
+  sql = `insert into Registration (firstname, lastname, email, phone, profession) values ('${firstname}','${lastname}','${email}','${phone}','${profession}')`;
   db.query(sql, (err, result) => {
     if (err) {
       console.log(err);
     }
-    console.log(result)
-    res.send('Inserted new details...');
-    let name = lastname + ' ' + firstname
-    sendMail(email, name);
+    // console.log(result)
+    // res.send('Inserted new details...');
+    const type = "register"
+    sendMail(email, firstname, type);
   })
 })
 
@@ -109,7 +221,7 @@ app.post('/addentry/', (req, res) => {
     privatephone
   } = req.body;
 
-  sql = `insert into sql8595427.EntryFormTable (
+  sql = `insert into EntryFormTable (
     salutation,
     employment,
     title,
@@ -137,10 +249,10 @@ app.post('/addentry/', (req, res) => {
     if (err) {
       console.log(err);
     }
-    console.log(result)
-    res.send('Inserted new details...');
-    let name = lastname + ' ' + firstname
-    sendMail(email, name);
+    // console.log(result)
+    // res.send('Inserted new details...');
+    const type = entry;
+    sendMail(email, firstname, type);
   })
 })
 

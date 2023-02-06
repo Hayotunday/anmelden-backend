@@ -46,22 +46,22 @@ const sendMail = async (receiver, name, type) => {
   let mailOptions = {}
 
   switch (type) {
-    case "register":
+    case "entry":
       transporter = nodemailer.createTransport({
         service: 'gmail',
         host: "smtp.gmail.com",
         port: 465,
         secure: true,
         auth: {
-          user: email_register,
-          pass: mailpass_register
+          user: email_entry,
+          pass: mailpass_entry
         }
       });
 
       mailOptions = {
-        from: email_register,
+        from: email_entry,
         to: receiver,
-        subject: 'Thema: Willkommen in unserer Gemeinschaft!',
+        subject: 'Willkommen in unserer Gemeinschaft!',
         html: `<div>
         <p>
           Lieber, ${name}
@@ -109,22 +109,22 @@ const sendMail = async (receiver, name, type) => {
         }
       })
       break;
-    case "entry":
+    case "register":
       transporter = nodemailer.createTransport({
         service: 'gmail',
         host: "smtp.gmail.com",
         port: 465,
         secure: true,
         auth: {
-          user: email_entry,
-          pass: mailpass_entry
+          user: email_register,
+          pass: mailpass_register
         }
       });
 
       mailOptions = {
-        from: email_entry,
+        from: email_register,
         to: receiver,
-        subject: 'Thema: Willkommen in unserer Gemeinschaft!',
+        subject: 'Willkommen zum Symposium!',
         html: `<div>
         <p>
           Sehr geehrte(r) ${name}

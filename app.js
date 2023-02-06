@@ -187,7 +187,7 @@ app.post('/addnewdetails/', (req, res) => {
     if (err) {
       console.log(err);
     }
-    // console.log(result)
+    console.log(result)
     // res.send('Inserted new details...');
     const type = "register"
     sendMail(email, firstname, type);
@@ -249,7 +249,7 @@ app.post('/addentry/', (req, res) => {
     if (err) {
       console.log(err);
     }
-    // console.log(result)
+    console.log(result)
     // res.send('Inserted new details...');
     const type = entry;
     sendMail(email, firstname, type);

@@ -233,7 +233,7 @@ app.post('/addentry/', (req, res) => {
     postcode,
     firstname,
     location,
-    lastname,
+    surname,
     phone,
     dob,
     email,

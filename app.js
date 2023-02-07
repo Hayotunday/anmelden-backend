@@ -16,12 +16,12 @@ app.use(function (req, res, next) {
 });
 app.use(bodyParser.json());
 
-// const host = process.env.DATABASEHOST
-// const user = process.env.DATABASEUSER
-// const password = process.env.DATABASEPASSWORD
-const host = "80.74.145.118"
-const user = "forms_DB"
-const password = "u1&ap3C56"
+const host = process.env.DATABASEHOST
+const user = process.env.DATABASEUSER
+const password = process.env.DATABASEPASSWORD
+// const host = "80.74.145.118"
+// const user = "forms_DB"
+// const password = "u1&ap3C56"
 const email_register = process.env.EMAILREGISTER
 const mailpass_register = process.env.MAILPASSREGISTER
 const email_entry = process.env.EMAILENTRY

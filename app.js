@@ -1,8 +1,8 @@
 const express = require('express')
 const mysql = require('mysql')
-const bodyParser = require("body-parser");
-const nodemailer = require('nodemailer');
-const cors = require('cors');
+const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer')
+const cors = require('cors')
 require('dotenv').config()
 
 const app = express();
@@ -19,9 +19,6 @@ app.use(bodyParser.json());
 const host = process.env.DATABASEHOST
 const user = process.env.DATABASEUSER
 const password = process.env.DATABASEPASSWORD
-// const host = "80.74.145.118"
-// const user = "forms_DB"
-// const password = "u1&ap3C56"
 const email_register = process.env.EMAILREGISTER
 const mailpass_register = process.env.MAILPASSREGISTER
 const email_entry = process.env.EMAILENTRY
@@ -68,31 +65,24 @@ const sendMail = async (receiver, name, type) => {
         subject: 'Willkommen in unserer Gemeinschaft!',
         html: `<div>
         <p>
-          Lieber, ${name}
+        Sehr geehrtes, ${name}
         </p>
       
         <P>
-          wir freuen uns sehr, Sie als neuen Mitglied in unserer Community begrüssen zu dürfen!
+          Wir freuen uns sehr, dass Sie der Gemeinschaft von Swissalbmed beigetreten sind! Ihre Mitgliedschaft bedeutet uns sehr viel, und wir sind bestrebt, hnen die Ressourcen, die Unterstützung und die Vorteile zu bieten, die Sie für Ihren Erfolg benötigen.
         </P>
       
         <p>
-          Wir haben es uns zur Aufgabe gemacht, unseren Mitglieder
-          qualitativ hochwertigsten Informationen, Ressourcen und Möglichkeiten in Ihrer beruf zu bieten. Von interessanten
-          Artikeln und wertvollen Tipps bis hin zu spannenden Veranstaltungen und exklusiven Angeboten
-          können Sie sich darauf verlassen, dass wir Sie auf dem Laufenden halten.
+          Als Mitglied haben Sie Zugang zu exklusiven Veranstaltungen, Online-Ressourcen usw. Wir ermutigen Sie, alle Vorteile der Mitgliedschaft zu nutzen  und sich in unserer Gemeinschaft zu engagieren.
         </p>
       
         <p>
-          Wir ermutigen Sie auch, sich zu beteiligen, indem Sie Ihre Gedanken mitteilen Feedback geben etc. Wir hören gerne
-          von unseren Abonnenten und schätzen Ihre Beiträge zu unserer Gemeinschaft.
+          Wir freuen uns darauf, mit Ihnen zusammenzuarbeiten und Sie auf Ihrem Weg zu unterstützen. Wenn Sie Fragen haben oder Hilfe benötigen, zögern Sie  bitte nicht, sich an uns zu wenden.
         </p>
       
         <p>
-          Noch einmal: Herzlich willkommen in unserer Community! Wir freuen uns sehr, Sie bei uns zu haben.
-        </p>
-      
-        <p>
-          Mit freundlichen Grüssen,
+          Mit freundlichen Grüßen,
+          Valbona MIftari
         </p>
       
         <p>

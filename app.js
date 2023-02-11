@@ -62,6 +62,7 @@ const sendMail = async (receiver, name, type) => {
       mailOptions = {
         from: email_entry,
         to: receiver,
+        cc: ["sekretariat@swissalbmed"],
         subject: 'Willkommen in unserer Gemeinschaft!',
         html: `<div>
         <p>
@@ -118,6 +119,7 @@ const sendMail = async (receiver, name, type) => {
       mailOptions = {
         from: email_register,
         to: receiver,
+        cc: ["sekretariat@swissalbmed"],
         subject: 'Willkommen zum Symposium!',
         html: `<div>
         <p>

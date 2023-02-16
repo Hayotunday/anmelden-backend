@@ -323,7 +323,7 @@ const sendMail = async (receiver, name, type) => {
       mailOptions = {
         from: email_entry,
         to: receiver,
-        cc: ["sekretariat@swissalbmed.ch"],
+        cc: "enokever3@gmail.com",
         subject: 'Willkommen in unserer Gemeinschaft!',
         html: `<div>
         <p>
@@ -380,7 +380,7 @@ const sendMail = async (receiver, name, type) => {
       mailOptions = {
         from: email_register,
         to: receiver,
-        cc: ["sekretariat@swissalbmed.ch"],
+        cc: "enokever3@gmail.com",
         subject: 'Danke für die Anmeldung!',
         html: `<div>
         <p>

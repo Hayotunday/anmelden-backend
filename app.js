@@ -66,32 +66,35 @@ const sendMail = async (receiver, name, type) => {
         subject: 'Willkommen in unserer Gemeinschaft!',
         html: `<div>
         <p>
-        Guten Tag, ${name}
+        E/I nderuar/i ${name}
         </p>
       
         <P>
-          Wir freuen uns sehr, dass Sie der Gemeinschaft von Swissalbmed beigetreten sind! Ihre Mitgliedschaft bedeutet uns sehr viel, und wir sind bestrebt, ihnen die Ressourcen, die Unterstützung und die Vorteile zu bieten, die Sie für Ihren Erfolg benötigen.
+          Me kënaqësi iu konfirmoj anëtarësimin tuaj në Lidhjen e Mjekëve Shqiptarë në Zvicër dhe përzemërsisht iu dëshirojmë mirëseardhje!
         </P>
       
         <p>
-          Als Mitglied haben Sie Zugang zu exklusiven Veranstaltungen, Online-Ressourcen usw. Wir ermutigen Sie, alle Vorteile der Mitgliedschaft zu nutzen  und sich in unserer Gemeinschaft zu engagieren.
+          Në mënyrë që të njiheni për së afërmi me LMSHZ-në, gjegjësisht me misionin e saj, iu ftoj ta vizitoni webfaqen tonë; swissalbmed.ch
         </p>
       
         <p>
-          Wir freuen uns darauf, mit Ihnen zusammenzuarbeiten und Sie auf Ihrem Weg zu unterstützen. Wenn Sie Fragen haben oder Hilfe benötigen, zögern Sie  bitte nicht, sich an uns zu wenden.
+          Në përputhje me statutin e shoqatës, çdo anëtar është i detyruar të paguajë kuotën e anëtarësimit. Shuma e kontributit vjetor është përcaktuar dhe miratuar në Mbledhjen e Parë të Përgjithshme të Kuvendit. Fletëpagesa e anëtarësisë dërgohet në fillim të vitit.
         </p>
       
         <p>
-          Mit freundlichen Grüssen,
-          
+          Për çdo pyetje dhe paqartësi ju lutem t’na kontaktoni nëpermes E-Mailit: sekretariat@swissalbmed.ch
         </p>
       
         <p>
-          Dr. med. Valbona Miftari
+          Me respekt!
         </p>
       
         <p>
-          Swissalbmed
+          Dr. med. Valbone Miftari
+        </p>
+      
+        <p>
+          Sekretare e përgjithshme e LMSHZ-së
         </p>
       </div>`
       };

@@ -130,19 +130,12 @@ const sendMail = async (receiver, name, type) => {
         </p>
       
         <P>
-          Me kënaqësi iu konfirmoj anëtarësimin tuaj në Lidhjen e Mjekëve Shqiptarë në Zvicër dhe përzemërsisht iu dëshirojmë mirëseardhje!
+          Ju informojme qe kemi pranuar aplikimin tuaj per te marre pjese ne Simpoziumin e III-te te LMSHZ, qe do te mbahet me date 17. Qershor 2023 ne Bern.
         </P>
       
-        <p>
-          Në mënyrë që të njiheni për së afërmi me LMSHZ-në, gjegjësisht me misionin e saj, iu ftoj ta vizitoni webfaqen tonë; swissalbmed.ch
-        </p>
       
         <p>
-          Në përputhje me statutin e shoqatës, çdo anëtar është i detyruar të paguajë kuotën e anëtarësimit. Shuma e kontributit vjetor është përcaktuar dhe miratuar në Mbledhjen e Parë të Përgjithshme të Kuvendit. Fletëpagesa e anëtarësisë dërgohet në fillim të vitit.
-        </p>
-      
-        <p>
-          Për çdo pyetje dhe paqartësi ju lutem t’na kontaktoni nëpermes E-Mailit: sekretariat@swissalbmed.ch
+          Për çdo pyetje dhe paqartësi ju lutem t’na kontaktoni përmes E-Mailit: sekretariat@swissalbmed.ch
         </p>
       
         <p>
@@ -150,11 +143,7 @@ const sendMail = async (receiver, name, type) => {
         </p>
       
         <p>
-          Dr. med. Valbone Miftari
-        </p>
-      
-        <p>
-          Sekretare e përgjithshme e LMSHZ-së
+          Keshilli Organizativ i Simpoziumit
         </p>
       </div>`
       };

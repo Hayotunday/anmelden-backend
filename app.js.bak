@@ -94,7 +94,7 @@ const sendMail = async (receiver, name, type) => {
         </p>
       
         <p>
-          Sekretare e përgjithshme e LMSHZ -së
+          Sekretare e përgjithshme e LMSHZ-së
         </p>
       </div>`
       };
